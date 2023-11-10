@@ -1,0 +1,57 @@
+<div class="svg-wrapper">
+  <svg height="60" width="500" xmlns="http://www.w3.org/2000/svg">
+    <rect class="shape1" height="60" width="500" />
+    <rect class="shape2" height="60" width="500" />
+    <div class="text">Double Border Animation</div>
+  </svg>
+</div>
+<style>
+  html,
+  body {
+    background: rgb(20, 20, 20);
+    text-align: center;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+  }
+  ::selection {
+    background: #19f6e8;
+  }
+  .svg-wrapper {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 auto;
+    width: 500px;
+  }
+  .shape1,
+  .shape2 {
+    stroke-dasharray: 1120;
+    stroke-width: 5px;
+    fill: transparent;
+    stroke: #19f6e8;
+    border-bottom: 5px solid black;
+    transition-timing-function: linear;
+    transition: stroke-dashoffset 4s, stroke-dasharray 4s;
+  }
+  .shape1 {
+    stroke-dashoffset: 1120;
+  }
+  .shape2 {
+    stroke-dashoffset: -1120;
+  }
+  .text {
+    font-family: "Roboto Condensed";
+    font-size: 22px;
+    line-height: 32px;
+    letter-spacing: 8px;
+    color: #fff;
+    top: -48px;
+    position: relative;
+  }
+  .svg-wrapper:hover .shape1,
+  .svg-wrapper:hover .shape2 {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 1120;
+  }
+</style>
