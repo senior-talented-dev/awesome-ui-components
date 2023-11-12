@@ -1,0 +1,81 @@
+<body>
+  <button onclick="handleClick()" class="button" aria-label="Toggle Button">
+    <svg class="toggle" width="100" height="100" viewBox="0 0 100 100">
+      <rect
+        class="bg"
+        style="fill-opacity: 0.8; stroke: none"
+        id="rect798"
+        width="84"
+        height="42"
+        x="8"
+        y="29"
+        ry="21"
+      />
+      <path class="knob" aria-labelledby="knobTitle">
+        <title id="knobTitle">Toggle Knob</title>
+        <animate
+          class="animate"
+          attributeName="d"
+          dur="0.5s"
+          repeatCount="1"
+          fill="freeze"
+        />
+      </path>
+    </svg>
+  </button>
+  <style>
+    body {
+      align-items: center;
+      background-color: white;
+      display: flex;
+      font-family: Vazirmatn, sans-serif;
+      height: 100vh;
+      justify-content: center;
+      margin: 0;
+    }
+    .button {
+      background-color: transparent;
+      border: 0;
+      border-radius: 5px;
+    }
+    .toggle {
+      cursor: pointer;
+    }
+    .bg {
+      fill: #333;
+    }
+    .knob {
+      fill: #fff;
+    }
+  </style>
+  <script>
+    let isExpanded = false;
+    const values = [
+      "M 46.99748,50 C 46.99748,59.941125 38.941125,68 29,68 19.058875,68 11,59.941125 11,50 11,40.058875 19.058875,32 29,32 38.941125,32 46.99748,40.058875 46.99748,50 Z",
+      "M 28.837557,50 C 28.837557,58.879376 35.941125,70 26,70 16.058875,70 8,61.045694 8,50 8,38.954306 16.058875,30 26,30 35.941125,30 28.837557,41.120624 28.837557,50 Z",
+      "M 46.99748,50 C 46.99748,59.941125 38.941125,68 29,68 19.058875,68 11,59.941125 11,50 11,40.058875 19.058875,32 29,32 38.941125,32 46.99748,40.058875 46.99748,50 Z",
+      "M 88.995591,50 C 88.995591,59.941125 80.941125,68 71,68 61.058875,68 53,59.941125 53,50 53,40.058875 61.058875,32 71,32 80.941125,32 88.995591,40.058875 88.995591,50 Z",
+      "M 91.986888,50 C 91.986888,61.045694 83.932422,70 73.991297,70 64.050172,70 69.133699,63.574824 69.133699,50 69.133699,36.425176 64.050172,30 73.991297,30 83.932422,30 91.986888,38.954306 91.986888,50 Z",
+      "M 88.995591,50 C 88.995591,59.941125 80.941125,68 71,68 61.058875,68 53,59.941125 53,50 53,40.058875 61.058875,32 71,32 80.941125,32 88.995591,40.058875 88.995591,50 Z",
+    ];
+    const path = document.querySelector(".knob");
+    const animate = document.querySelector(".animate");
+
+    function handleClick() {
+      animate.setAttribute(
+        "values",
+        !isExpanded ? values.join("; ") : values.slice().reverse().join("; ")
+      );
+      animate.beginElement();
+      isExpanded = !isExpanded;
+    }
+
+    function handleKeydown(event) {
+      if (event.key === "Enter" || event.key === " ") {
+        handleClick();
+      }
+    }
+
+    path.setAttribute("d", values[0]);
+  </script>
+</body>
